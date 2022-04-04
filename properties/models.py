@@ -13,6 +13,7 @@ CHOICES =(
     ("Land", "Land"),
     ("Hotels", "Hotels"),
     ("Estate Market","Estate Market"),
+    #model fixed
     
 )
 class Category(models.Model):
