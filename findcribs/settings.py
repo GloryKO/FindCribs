@@ -67,6 +67,7 @@ INSTALLED_APPS = [
 
     'cloudinary',
     'cloudinary_storage',
+    'corsheaders',
 ]
 
 
@@ -229,5 +230,7 @@ REST_AUTH_SERIALIZERS = {
 }
 
 LOGIN_URL = 'https://localhost:8000/dj-rest-auth/login'
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 django_heroku.settings(locals())
