@@ -2,7 +2,7 @@ from email.policy import default
 from logging import PlaceHolder
 from django.db import models
 from django.forms import ImageField
-from users.models import CustomUser
+from users.models import CustomUser, Profile
 # Create your models here.
 from cloudinary.models import CloudinaryField
 
@@ -31,7 +31,7 @@ PROPERTY_CHOICES =(
 class Property(models.Model):
     name=models.CharField(max_length=250)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
-    owner = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    owner = models.ForeignKey(Profile,on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10,decimal_places=2)
     location = models.CharField(max_length=250)
     size = models.PositiveIntegerField()

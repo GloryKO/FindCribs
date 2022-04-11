@@ -23,12 +23,15 @@ class ListPropertyView(ListAPIView):
 class CreatePropertyView(CreateAPIView):
     queryset =Property.objects.all()
     serializer_class = PropertySerializer
+
     
 
 class PropertyDetailView(RetrieveUpdateDestroyAPIView):
     queryset= Property.objects.all()
     serializer_class= PropertySerializer
     permission_classes =[IsOwnerOrReadOnly,]
+        
+
 
 @api_view(['POST'])
 @permission_classes((IsAuthenticated,))

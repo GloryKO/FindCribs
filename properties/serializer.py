@@ -1,14 +1,19 @@
 from dataclasses import field
 from pyexpat import model
+from unicodedata import category
 from rest_framework import serializers
 from .models import Category, Property
+from users.serializers import ProfileSerializer
 
-class PropertySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Property
-        fields = '__all__'
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model= Category
-        fields ='__all__'
+        fields =['name',]
+
+class PropertySerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+    owner = ProfileSerializer()
+    class Meta:
+        model = Property
+        fields = '__all__'
