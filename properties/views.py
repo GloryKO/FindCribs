@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from . models import Category, Property
 from rest_framework.response import Response
-from .serializer import PropertySerializer,CategorySerializer
+from .serializer import CategorySerializer,CreatePropertySerializer,PropertyListSerializer,PropertyDetailSerializer
 from rest_framework.generics import ListAPIView,CreateAPIView ,RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import  IsAuthenticated,IsAuthenticatedOrReadOnly,AllowAny
 from .permissions import IsOwnerOrReadOnly
@@ -16,20 +16,21 @@ class CategoriesListView(ListAPIView):
 
 class ListPropertyView(ListAPIView):
     queryset = Property.objects.all()
-    serializer_class = PropertySerializer
+    serializer_class = PropertyListSerializer
     
 
     
 class CreatePropertyView(CreateAPIView):
     queryset =Property.objects.all()
-    serializer_class = PropertySerializer
+    serializer_class = CreatePropertySerializer
+    permission_classes =[IsAuthenticated]
 
     
 
 class PropertyDetailView(RetrieveUpdateDestroyAPIView):
     queryset= Property.objects.all()
-    serializer_class= PropertySerializer
-    permission_classes =[IsOwnerOrReadOnly,]
+    serializer_class= PropertyDetailSerializer
+    permission_classes =[IsAuthenticated,IsOwnerOrReadOnly,]
         
 
 

@@ -22,7 +22,7 @@ import os
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.decorators import api_view,permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 from .permissions import IsOwnerOrReadOnly
 
 from rest_framework import status
@@ -43,5 +43,5 @@ class FacebookLogin(SocialLoginView):
 class UserProfileView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes=[IsOwnerOrReadOnly,]
+    permission_classes=[IsAuthenticated,IsOwnerOrReadOnly,]
 
