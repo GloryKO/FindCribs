@@ -27,7 +27,7 @@ from dj_rest_auth.views import  LogoutView
 from dj_rest_auth.registration.views import VerifyEmailView,ConfirmEmailView
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.views.decorators.csrf import csrf_exempt
 
 schema_view = get_schema_view( 
    openapi.Info(
@@ -59,8 +59,9 @@ urlpatterns = [
     path('users/',include('users.urls')),
     #path('dj-rest-auth/logout/',LogoutView.as_view()),
     path('properties/',include('properties.urls')),
-    path('',schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/',schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+
+    path('api/v1/doc/', csrf_exempt(schema_view.with_ui('swagger', cache_timeout=0), )),
+    path('redoc/', csrf_exempt(schema_view.with_ui('redoc', cache_timeout=0))),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

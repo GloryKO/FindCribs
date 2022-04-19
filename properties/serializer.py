@@ -3,7 +3,7 @@ from pyexpat import model
 from unicodedata import category
 from rest_framework import serializers
 from .models import Category, Property
-from users.serializers import ProfileSerializer
+from users.serializers import ProfileSerializer,UserSerializer
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class PropertyListSerializer(serializers.ModelSerializer):
     #owner = ProfileSerializer()
     class Meta:
         model = Property
-        exclude =['favourites',]
+        exclude =['favourites','owner']
 
 class CreatePropertySerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,7 +27,7 @@ class CreatePropertySerializer(serializers.ModelSerializer):
 
 class PropertyDetailSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
-    owner = ProfileSerializer()
+    owner = UserSerializer()
     class Meta:
         model = Property
         exclude =['favourites']

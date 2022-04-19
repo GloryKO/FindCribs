@@ -12,7 +12,7 @@ from cloudinary.models import CloudinaryField
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(('email address'), unique=True)
-    phone = models.CharField(max_length=250,blank=False,unique=True)
+    phone = models.CharField(max_length=250,blank=False,)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -27,7 +27,7 @@ class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name='profile')
     fullname= models.CharField(max_length=500)
     business_name = models.CharField(max_length=250)
-    #phone = models.CharField(max_length=250,blank=False,unique=True)
+    #phone = models.CharField(max_length=250,)
     about =models.TextField()
     profile_image = CloudinaryField('image',blank=True)
 

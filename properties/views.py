@@ -30,7 +30,7 @@ class CreatePropertyView(CreateAPIView):
 class PropertyDetailView(RetrieveUpdateDestroyAPIView):
     queryset= Property.objects.all()
     serializer_class= PropertyDetailSerializer
-    permission_classes =[IsAuthenticated,IsOwnerOrReadOnly,]
+    permission_classes =[IsAuthenticated,IsOwnerOrReadOnly]
         
 
 
