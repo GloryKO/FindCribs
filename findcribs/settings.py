@@ -73,13 +73,12 @@ INSTALLED_APPS = [
 
 
 REST_FRAMEWORK = {
-    #  'DEFAULT_PERMISSION_CLASSES':
-    #     ('rest_framework.permissions.IsAuthenticated',),
+   
     
 	'DEFAULT_AUTHENTICATION_CLASSES': [
         #'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
 
 	],
 }
@@ -87,6 +86,15 @@ REST_FRAMEWORK = {
 
 #REST_USE_JWT = True
 #JWT_AUTH_COOKIE = 'my-app-auth' # 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+}
 
 
 MIDDLEWARE = [

@@ -35,6 +35,7 @@ class CustomRegisterSerializer(RegisterSerializer):
 
 class CustomLoginSerializer(LoginSerializer):
     username = None
+    
 
         
 class ProfileSerializer(serializers.ModelSerializer):
