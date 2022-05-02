@@ -30,4 +30,5 @@ class PropertyDetailSerializer(serializers.ModelSerializer):
     owner = UserSerializer()
     class Meta:
         model = Property
-        exclude =['favourites']
+        fields =['id','owner','name','category','price','location','size','image1',
+            'image2','image3','description','property_type',]      

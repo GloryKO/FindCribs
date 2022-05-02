@@ -9,7 +9,7 @@ from dj_rest_auth.serializers import LoginSerializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields =['first_name','last_name','email','phone']
+        fields =['id','first_name','last_name','email','phone']
 
 
 
@@ -41,7 +41,7 @@ class CustomLoginSerializer(LoginSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields =['fullname','business_name','about','profile_image',]
+        fields =['id','fullname','business_name','about','profile_image',]
 
 
 
